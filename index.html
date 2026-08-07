@@ -17,9 +17,7 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      /* サイト全体（マップ以降を含む）の背景に画像を設定 */
-      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.6) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri_3.png') no-repeat center center fixed;
-      background-size: cover;
+      background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -41,57 +39,63 @@
       color: var(--accent-blue);
       letter-spacing: 2px;
     }
-/* ビルボードセクション */
+
+    /* ビルボードセクション（画像タグ配置用） */
     .billboard {
-      /* 背景画像の指定を削除し、透明にする */
-      background: transparent;
-      padding: 14rem 1.5rem 6rem; 
+      background: radial-gradient(circle at center, #132235 0%, #080d14 100%);
+      padding: 2.5rem 1rem 2rem;
       text-align: center;
       border-bottom: 1px solid var(--border);
       position: relative;
     }
-    
+    .fish-illustration {
+      max-width: 750px;
+      margin: 0 auto 1.2rem;
+      position: relative;
+      filter: drop-shadow(0 10px 25px rgba(0, 188, 212, 0.3));
+    }
+    .fish-illustration img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
     .billboard-badge {
       display: inline-block;
       background: var(--accent-orange);
       color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: bold;
-      padding: 0.3rem 1rem;
+      padding: 0.25rem 0.9rem;
       border-radius: 20px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
       letter-spacing: 1px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
     .billboard h1 {
-      font-size: 4rem;
-      margin: 0 0 1.5rem;
+      font-size: 2.8rem;
+      margin: 0 0 1rem;
       color: #ffffff;
-      /* 背景に負けないよう、文字に強い影と発光を設定 */
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 188, 212, 0.8);
-      letter-spacing: 4px;
+      text-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
+      letter-spacing: 2px;
     }
     .fight-description {
-      max-width: 850px;
+      max-width: 800px;
       margin: 0 auto;
-      /* 囲みを完全に外し、文字のみのレイアウトに変更 */
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: #f0f9ff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,1);
-      line-height: 1.8;
+      line-height: 1.7;
       font-weight: 500;
     }
     .fight-title {
       font-weight: bold;
       color: var(--accent-orange);
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0.5rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,1);
+      gap: 0.4rem;
     }
 
     .container {
@@ -228,8 +232,7 @@
     }
 
     @media (max-width: 600px) {
-      .billboard h1 { font-size: 2.5rem; }
-      .billboard { padding: 6rem 1rem 3rem; }
+      .billboard h1 { font-size: 2.2rem; }
       .japan-map-grid { grid-template-columns: 1fr; }
       .map-region-label { grid-column: span 1; }
     }
@@ -242,10 +245,15 @@
     <div style="font-size: 0.85rem; color: var(--text-sub);">釣りと食のデータベース</div>
   </header>
 
-  <!-- ビルボードエリア（背景画像化・囲み排除） -->
+  <!-- ビルボードエリア（buri_3.png を見切れずに美しく表示） -->
   <section class="billboard">
     <div class="billboard-badge">TARGET 001</div>
     
+    <!-- ここで buri_3.png を画像タグとして呼び出します -->
+    <div class="fish-illustration">
+      <img src="buri_3.png" alt="ブリの水中ファイトイラスト">
+    </div>
+
     <h1>ブリ（鰤）</h1>
 
     <div class="fight-description">
@@ -326,7 +334,7 @@
   </div>
 
   <footer>
-    &copy; 2026 つり太郎 〜ブチ曲がりの興奮と至福の美食データベース〜
+    &copy; 2026 つり太郎 〜ブチ曲가りの興奮と至福の美食データベース〜
   </footer>
 
   <script>

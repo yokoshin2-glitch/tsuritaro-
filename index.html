@@ -17,7 +17,9 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
+      /* サイト全体（マップ以降を含む）の背景に画像を設定 */
+      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.6) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri_3.png') no-repeat center center fixed;
+      background-size: cover;
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -39,18 +41,16 @@
       color: var(--accent-blue);
       letter-spacing: 2px;
     }
-
-    /* ビルボードセクション（背景画像化） */
+/* ビルボードセクション */
     .billboard {
-      /* 画像の基準位置を center center から center 70% (少し下寄り) に変更 */
-      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri.png') no-repeat center 70%;
-      background-size: cover;
-      /* 上下の余白（padding）を増やして、画像の表示領域を縦に広げる */
+      /* 背景画像の指定を削除し、透明にする */
+      background: transparent;
       padding: 14rem 1.5rem 6rem; 
       text-align: center;
       border-bottom: 1px solid var(--border);
       position: relative;
     }
+    
     .billboard-badge {
       display: inline-block;
       background: var(--accent-orange);

@@ -42,10 +42,11 @@
 
     /* ビルボードセクション（背景画像化） */
     .billboard {
-      /* ★ここで buri.png を背景として読み込みます */
-      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri.png') no-repeat center center;
+      /* 画像の基準位置を center center から center 70% (少し下寄り) に変更 */
+      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri.png') no-repeat center 70%;
       background-size: cover;
-      padding: 10rem 1.5rem 4rem; 
+      /* 上下の余白（padding）を増やして、画像の表示領域を縦に広げる */
+      padding: 14rem 1.5rem 6rem; 
       text-align: center;
       border-bottom: 1px solid var(--border);
       position: relative;

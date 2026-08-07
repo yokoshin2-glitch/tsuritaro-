@@ -1,71 +1,420 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ブリ（鰤）| つり太郎 - 釣りと食のデータベース</title>
-<style>
-:root {
---bg-color: #080d14;
---card-bg: #101923;
---accent-blue: #00bcd4;
---accent-orange: #ff6d00;
---text-main: #e0f2fe;
---text-sub: #94a3b8;
---border: #1e293b;
-}
-body {
-margin: 0;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-background-color: var(--bg-color);
-color: var(--text-main);
-line-height: 1.6;
-}
-header {
-background: rgba(8, 13, 20, 0.95);
-padding: 0.8rem 1.5rem;
-border-bottom: 1px solid var(--border);
-display: flex;
-justify-content: space-between;
-align-items: center;
-position: sticky;
-top: 0;
-z-index: 100;
-backdrop-filter: blur(8px);
-}
-.logo {
-font-size: 1.3rem;
-font-weight: bold;
-color: var(--accent-blue);
-letter-spacing: 2px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブリ（鰤）| つり太郎 - 釣りと食のデータベース</title>
+  <style>
+    :root {
+      --bg-color: #080d14;
+      --card-bg: #101923;
+      --accent-blue: #00bcd4;
+      --accent-orange: #ff6d00;
+      --text-main: #e0f2fe;
+      --text-sub: #94a3b8;
+      --border: #1e293b;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(8, 13, 20, 0.95);
+      padding: 0.8rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--accent-blue);
+      letter-spacing: 2px;
+    }
 
-/* ビルボードセクション（背景画像化） */
-.billboard {
-/* ★ここで buri.png を背景として読み込みます */
-      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri_3.png') no-repeat center center;
-      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri.png') no-repeat center center;
-background-size: cover;
-padding: 10rem 1.5rem 4rem; 
-text-align: center;
-border-bottom: 1px solid var(--border);
-position: relative;
-}
-.billboard-badge {
-display: inline-block;
-background: var(--accent-orange);
-color: #fff;
-font-size: 0.85rem;
-font-weight: bold;
-padding: 0.3rem 1rem;
-border-radius: 20px;
-margin-bottom: 1rem;
-letter-spacing: 1px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-}
-.billboard h1 {
-font-size: 4rem;
-margin: 0 0 1.5rem;
-color: #ffffff;
-/* 背景に負けないよう、文字に強い影と発光を設定 */
-text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 188, 212, 0.8);
+    /* ビルボードセクション（画像タグ配置用） */
+    .billboard {
+      background: radial-gradient(circle at center, #132235 0%, #080d14 100%);
+      padding: 2.5rem 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .fish-illustration {
+      max-width: 750px;
+      margin: 0 auto 1.2rem;
+      position: relative;
+      filter: drop-shadow(0 10px 25px rgba(0, 188, 212, 0.3));
+    }
+    .fish-illustration img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+    .billboard-badge {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 0.25rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 0.6rem;
+      letter-spacing: 1px;
+    }
+    .billboard h1 {
+      font-size: 2.8rem;
+      margin: 0 0 1rem;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
+      letter-spacing: 2px;
+    }
+    .fight-description {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.05rem;
+      color: #f0f9ff;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+    .fight-title {
+      font-weight: bold;
+      color: var(--accent-orange);
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* マップセクション */
+    .map-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--accent-blue);
+      border-bottom: 2px solid var(--accent-blue);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .season-selector {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+      scrollbar-width: thin;
+    }
+    .season-btn {
+      background: #1a2636;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .season-btn.active {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 109, 0, 0.4);
+    }
+
+    /* 日本地図風2列レイアウト */
+    .japan-map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      background: #0b131d;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .map-region-label {
+      grid-column: span 2;
+      font-size: 0.75rem;
+      color: var(--accent-blue);
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.2rem;
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+    .map-tile {
+      background: #162232;
+      padding: 0.75rem 0.5rem;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      transition: all 0.3s;
+    }
+    .map-tile.active {
+      background: rgba(255, 109, 0, 0.25);
+      border-color: var(--accent-orange);
+      color: #ffffff;
+      font-weight: bold;
+      box-shadow: inset 0 0 10px rgba(255, 109, 0, 0.3);
+    }
+    .map-tile .status {
+      font-size: 0.72rem;
+      display: block;
+      margin-top: 0.2rem;
+      color: var(--accent-orange);
+    }
+
+    /* 横長ワイドタイル */
+    .horizontal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .horizontal-card .card-content {
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+    .api-box-inline {
+      background: rgba(0, 188, 212, 0.06);
+      border: 1px dashed var(--accent-blue);
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-sub);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .billboard h1 { font-size: 2.2rem; }
+      .japan-map-grid { grid-template-columns: 1fr; }
+      .map-region-label { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">つり太郎</div>
+    <div style="font-size: 0.85rem; color: var(--text-sub);">釣りと食のデータベース</div>
+  </header>
+
+  <!-- ビルボードエリア（buri_3.png を見切れずに美しく表示） -->
+  <section class="billboard">
+    <div class="billboard-badge">TARGET 001</div>
+    
+    <!-- ここで buri_3.png を画像タグとして呼び出します -->
+    <div class="fish-illustration">
+      <img src="buri_3.png" alt="ブリの水中ファイトイラスト">
+    </div>
+
+    <h1>ブリ（鰤）</h1>
+
+    <div class="fight-description">
+      <div class="fight-title">🔥 狂乱のファイト（ブチ曲がりアドレナリン）</div>
+      ドラグを容赦なく引き出す暴力的なラン！「カンッ、カンッ！」とロッドを叩き、バットからひん曲げる重量感にアドレナリンが沸騰する。一瞬の油断も許されない極限の力勝負！
+    </div>
+  </section>
+
+  <div class="container">
+    
+    <!-- 全国回遊＆激アツ海域マップ（1〜12月全月対応） -->
+    <div class="map-card">
+      <div class="card-title">🌊 全国回遊＆激アツ海域マップ（1月〜12月切り替え）</div>
+      <p style="font-size: 0.88rem; color: var(--text-sub); margin-top:-0.5rem;">月を選択すると、対馬海流・黒潮に沿った最盛期エリアが地理の位置関係でハイライトされます。</p>
+      
+      <!-- 1〜12月ボタン -->
+      <div class="season-selector" id="seasonSelector">
+        <button class="season-btn" onclick="selectMonth(1)">1月</button>
+        <button class="season-btn" onclick="selectMonth(2)">2月</button>
+        <button class="season-btn" onclick="selectMonth(3)">3月</button>
+        <button class="season-btn" onclick="selectMonth(4)">4月</button>
+        <button class="season-btn" onclick="selectMonth(5)">5月</button>
+        <button class="season-btn" onclick="selectMonth(6)">6月</button>
+        <button class="season-btn" onclick="selectMonth(7)">7月</button>
+        <button class="season-btn" onclick="selectMonth(8)">8月</button>
+        <button class="season-btn" onclick="selectMonth(9)">9月</button>
+        <button class="season-btn active" onclick="selectMonth(10)">10月（最盛期）</button>
+        <button class="season-btn" onclick="selectMonth(11)">11月（寒ブリ）</button>
+        <button class="season-btn" onclick="selectMonth(12)">12月（寒ブリ）</button>
+      </div>
+
+      <!-- 日本地図風グリッド（左：日本海側 / 右：太平洋側） -->
+      <div class="japan-map-grid" id="mapGrid">
+        <!-- JSで動的描画されます -->
+      </div>
+    </div>
+
+    <!-- 横長ワイドタイル群 -->
+
+    <!-- 食の至福 -->
+    <div class="horizontal-card">
+      <div class="card-title">🍶 食の至福（極上の美食体験）</div>
+      <div class="card-content">
+        秋から冬にかけて全身に脂が回る「寒ブリ」はまさに海のトロ。しっかりと血抜きを行い数日熟成させた刺身は口の中でとろけ、脂の溶け出すブリしゃぶや特製ブリ大根は至高の極み。
+        <div style="margin-top: 0.6rem; font-size: 0.88rem; color: var(--text-sub);">
+          <strong>【おすすめ調理法】</strong> 刺身（霜降り造り）、ブリしゃぶ、カマの塩焼き、照り焼き
+        </div>
+      </div>
+    </div>
+
+    <!-- 必勝メソッド＆おすすめタックル -->
+    <div class="horizontal-card">
+      <div class="card-title">⚙️ 必勝メソッド＆おすすめタックル</div>
+      <div class="card-content">
+        150〜200gのメタルジグを用いたワンピッチジャークでボトムから中層をスピーディーに攻略。またはライブベイト（アジ・イワシ）を用いた落とし込み釣り。
+        <div style="margin-top: 0.6rem; font-size: 0.88rem; color: var(--text-sub);">
+          <strong>【魚探・ソナー攻略】</strong> 水深50〜100m。クリアビューでボトム付近に固まるイワシの群れと、それに突っ込む大型単体反応を識別して直撃。
+        </div>
+        <div class="api-box-inline">
+          <span style="font-size: 0.85rem; color: var(--text-sub);">🛒 リアルタイム自動連携ギア：</span>
+          <strong style="color: var(--accent-blue);">「ブリ ジギング ロッド MH オフショア」</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- キャンピングカー遠征 車中泊拠点 -->
+    <div class="horizontal-card">
+      <div class="card-title">🚐 キャンピングカー遠征・車中泊拠点</div>
+      <div class="card-content">
+        秋の三陸・秋田エリアの漁港巡りから始まり、初冬は北陸・山陰へ南下する車中泊ハイシーズン。海況が荒れやすいため、出船地近くの「道の駅」やRVパークを拠点に待機する柔軟な遠征スタイルが釣果を分けます。
+        <div class="api-box-inline">
+          <span style="font-size: 0.85rem; color: var(--text-sub);">🔪 プロ仕様調理・保存アイテム：</span>
+          <strong style="color: var(--accent-orange);">「刺身包丁 柳刃 鋼 / 出刃包丁」</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 つり太郎 〜ブチ曲가りの興奮と至福の美食データベース〜
+  </footer>
+
+  <script>
+    // 1〜12月の回遊マップデータ（日本海側 vs 太平洋側の配置）
+    const seaData = {
+      1:  { active: ["山陰沖", "玄界灘・響灘"], status: "南下・越冬" },
+      2:  { active: ["玄界灘・響灘", "日向灘・九州"], status: "越冬シーズン" },
+      3:  { active: ["玄界灘・響灘", "山陰沖"], status: "北上開始" },
+      4:  { active: ["山陰沖", "若狭湾・丹後"], status: "回遊中" },
+      5:  { active: ["若狭湾・丹後", "富山湾・能登"], status: "北上中" },
+      6:  { active: ["富山湾・能登", "佐渡・新潟沖"], status: "回遊中" },
+      7:  { active: ["秋田・庄内沖", "津軽海峡・道南"], status: "北上ハイシーズン" },
+      8:  { active: ["北海道・道東沖", "津軽海峡・道南"], status: "北方滞在期" },
+      9:  { active: ["三陸沖（北部・中部）", "秋田・庄内沖"], status: "戻りブリ開始🔥" },
+      10: { active: ["三陸沖（北部・中部）", "秋田・庄内沖", "三陸沖（南部）・仙台湾"], status: "爆釣ハイシーズン🔥" },
+      11: { active: ["三陸沖（南部）・仙台湾", "佐渡・新潟沖", "富山湾・能登"], status: "寒ブリ到来🔥" },
+      12: { active: ["富山湾・能登", "若狭湾・丹後", "佐渡・新潟沖"], status: "極上寒ブリシーズン🔥" }
+    };
+
+    const mapLayout = [
+      { region: "【北海道・北東北エリア】" },
+      { id: "北海道・道東沖", label: "北海道・道東" },
+      { id: "津軽海峡・道南", label: "津軽海峡・道南" },
+      
+      { region: "【東北エリア（日本海側 vs 太平洋側）】" },
+      { id: "秋田・庄内沖", label: "秋田・庄内沖（日本海）" },
+      { id: "三陸沖（北部・中部）", label: "三陸沖北部（太平洋）" },
+      { id: "佐渡・新潟沖", label: "佐渡・新潟沖（日本海）" },
+      { id: "三陸沖（南部）・仙台湾", label: "三陸・仙台湾（太平洋）" },
+
+      { region: "【北陸・関東・中和エリア】" },
+      { id: "富山湾・能登", label: "富山湾・能登（日本海）" },
+      { id: "鹿島灘・外房", label: "鹿島灘・外房（太平洋）" },
+      { id: "若狭湾・丹後", label: "若狭湾・丹後（日本海）" },
+      { id: "相模湾・駿河湾", label: "相模湾・駿河湾（太平洋）" },
+
+      { region: "【山陰・西日本・九州エリア】" },
+      { id: "山陰沖", label: "山陰沖（日本海）" },
+      { id: "紀伊水道・熊野灘", label: "紀伊・熊野（太平洋）" },
+      { id: "玄界灘・響灘", label: "玄界灘・響灘（九州）" },
+      { id: "日向灘・九州", label: "日向灘・鹿児島（太平洋）" }
+    ];
+
+    function selectMonth(m) {
+      // ボタンのアクティブ化
+      const btns = document.querySelectorAll('.season-btn');
+      btns.forEach((btn, idx) => {
+        if(idx + 1 === m) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+
+      // マップタイルの描画
+      const grid = document.getElementById('mapGrid');
+      grid.innerHTML = '';
+      
+      const currentData = seaData[m];
+
+      mapLayout.forEach(item => {
+        if (item.region) {
+          const label = document.createElement('div');
+          label.className = 'map-region-label';
+          label.innerText = item.region;
+          grid.appendChild(label);
+        } else {
+          const tile = document.createElement('div');
+          const isActive = currentData.active.includes(item.id);
+          tile.className = `map-tile ${isActive ? 'active' : ''}`;
+          
+          let html = `${item.label}`;
+          if (isActive) {
+            html += `<span class="status">${currentData.status}</span>`;
+          }
+          tile.innerHTML = html;
+          grid.appendChild(tile);
+        }
+      });
+    }
+
+    // 初期ロード（10月表示）
+    selectMonth(10);
+  </script>
+</body>
+</html>

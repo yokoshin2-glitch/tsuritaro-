@@ -252,63 +252,8 @@
     <div class="billboard-badge">TARGET 001</div>
     
     <!-- メタルジグを咥えて海底に反転・突進するダイナミックな写実イラストSVG -->
-    <div class="fish-illustration">
-      <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="yellowtailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#1e3a5f" />
-            <stop offset="35%" stop-color="#2a52be" />
-            <stop offset="50%" stop-color="#eab308" />
-            <stop offset="65%" stop-color="#94a3b8" />
-            <stop offset="100%" stop-color="#f8fafc" />
-          </linearGradient>
-          <linearGradient id="jigGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#ff0055" />
-            <stop offset="50%" stop-color="#ffffff" />
-            <stop offset="100%" stop-color="#00bcd4" />
-          </linearGradient>
-        </defs>
-
-        <!-- 海底の泡とダイブのスピードライン -->
-        <path d="M 50 40 Q 150 80 250 60" stroke="rgba(0,188,212,0.2)" stroke-width="3" fill="none" stroke-dasharray="5 5" />
-        <path d="M 30 180 Q 180 210 320 190" stroke="rgba(0,188,212,0.15)" stroke-width="2" fill="none" />
-        <circle cx="80" cy="160" r="4" fill="rgba(255,255,255,0.3)" />
-        <circle cx="120" cy="180" r="6" fill="rgba(255,255,255,0.2)" />
-        <circle cx="60" cy="120" r="3" fill="rgba(255,255,255,0.4)" />
-
-        <!-- 反転突進するブリの魚体 -->
-        <g transform="rotate(-12 250 120)">
-          <!-- 尾ヒレ -->
-          <path d="M 400 110 L 460 60 Q 430 110 470 150 Z" fill="#1e3a5f" stroke="#0f172a" stroke-width="2"/>
-          <!-- 魚体メイン -->
-          <path d="M 120 110 C 180 40, 320 50, 410 110 C 330 170, 180 170, 120 110 Z" fill="url(#yellowtailGrad)" stroke="#1e293b" stroke-width="2" />
-          <!-- 黄色中央ライン -->
-          <path d="M 140 110 Q 270 95 405 110" stroke="#facc15" stroke-width="5" fill="none" opacity="0.9" />
-          <!-- 胸ヒレ・腹ヒレ -->
-          <path d="M 210 125 L 240 155 L 225 125 Z" fill="#1e3a5f" opacity="0.9"/>
-          <path d="M 280 135 L 305 160 L 295 130 Z" fill="#1e3a5f" opacity="0.8"/>
-          <!-- 背ヒレ -->
-          <path d="M 240 65 Q 290 40 330 75 Z" fill="#0f172a" />
-          <!-- エラ蓋と目 -->
-          <path d="M 170 85 Q 185 110 170 135" stroke="#0f172a" stroke-width="2" fill="none" />
-          <circle cx="150" cy="98" r="7" fill="#facc15" stroke="#000" stroke-width="1.5"/>
-          <circle cx="149" cy="98" r="3.5" fill="#000" />
-          <!-- 口 -->
-          <path d="M 120 110 L 135 118" stroke="#000" stroke-width="2" />
-
-          <!-- 口元にくわえたピンクシルバーのメタルジグとアシストフック -->
-          <g transform="translate(85, 105) rotate(25)">
-            <!-- ジグ本体 -->
-            <polygon points="0,0 55,-8 60,0 55,8" fill="url(#jigGrad)" stroke="#475569" stroke-width="1" />
-            <circle cx="5" cy="0" r="2" fill="#000" />
-            <!-- ホログラム目玉 -->
-            <circle cx="10" cy="-2" r="2.5" fill="#facc15" />
-            <!-- PEアシストライン＆フック -->
-            <path d="M 50 0 L 35 15 L 20 10" stroke="#ef4444" stroke-width="2" fill="none" />
-            <path d="M 20 10 Q 15 20 22 25 T 28 15" stroke="#cbd5e1" stroke-width="2" fill="none" />
-          </g>
-        </g>
-      </svg>
+   <div class="fish-illustration">
+      <img src="buri.png" alt="ブリの水中ファイトイラスト" style="width:100%; max-width:800px; height:auto; border-radius:12px; box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);">
     </div>
 
     <h1>ブリ（鰤）</h1>

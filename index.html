@@ -42,10 +42,10 @@
 
     /* ビルボードセクション（背景画像化） */
     .billboard {
-      /* イラストを背景に設定し、文字が読みやすいよう下部に向かって暗くなるグラデーションを重ねています */
-      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('buri_2.png') no-repeat center center;
+      /* ★ここで buri_3.png を背景として読み込みます */
+      background: linear-gradient(to bottom, rgba(8, 13, 20, 0.2) 0%, rgba(8, 13, 20, 0.95) 100%), url('./buri_3.png') no-repeat center center;
       background-size: cover;
-      padding: 10rem 1.5rem 4rem; /* イラストがよく見えるように上部の余白を大きく確保 */
+      padding: 10rem 1.5rem 4rem; 
       text-align: center;
       border-bottom: 1px solid var(--border);
       position: relative;
